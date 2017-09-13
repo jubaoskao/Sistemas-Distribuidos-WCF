@@ -52,12 +52,18 @@ namespace AvaliadorExpressoes
         {
             Hashtable hash = new Hashtable();
 
-            btnAnalisar_Click(null, null);
+            if (txtExpressao.Text == string.Empty) { 
+                MessageBox.Show("Insira alguma expressão para calcular");
+                
+            }else
+            { 
+                btnAnalisar_Click(null, null);
 
-            foreach (DataGridViewRow item in dtgElementos.Rows)
-                hash[item.Cells[0].Value.ToString()] = Convert.ToDouble(item.Cells[1].Value);
+                foreach (DataGridViewRow item in dtgElementos.Rows)
+                    hash[item.Cells[0].Value.ToString()] = Convert.ToDouble(item.Cells[1].Value);
 
-            lblResultado.Text = calculadora.Calcular(lblPosFixa.Text, hash).ToString();
+                lblResultado.Text = calculadora.Calcular(lblPosFixa.Text, hash).ToString();
+            }
         }
     }
 }
